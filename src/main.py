@@ -14,7 +14,7 @@ LORA_NODE_DR = 5
 LORA_REGION = LoRa.EU868
 LORA_DEVICE_CLASS = LoRa.CLASS_C
 LORA_ACTIVATION = LoRa.OTAA
-VERSION_FILE = '/flash/version.txt'
+VERSION_FILE = '/flash/version.py'
 
 # Get LoRa credentials from non-volatile storage
 APP_KEY = pycom.nvs_get('app_key')
