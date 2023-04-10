@@ -40,6 +40,7 @@ ota = LoraOTA(lora, DEVICE_VERSION)
 def main():
    ota.send_device_version_message()
    while True:
+      print("change")
       if not ota.update_in_progress:
          temperature = random_range(10, 30) # Generate a random temperature between 10 and 30 degrees Celsius
          humidity = random_range(40, 70) # Generate a random humidity between 40 and 70 percent
