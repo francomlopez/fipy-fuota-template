@@ -6,7 +6,7 @@ from network import LoRa
 import utime
 from utils import random_range
 import uos
-from delete_file_test import printin
+from new_file_test import printiton
 import os
 import pycom
 
@@ -39,12 +39,12 @@ lora.connect()
 ota = LoraOTA(lora, DEVICE_VERSION)
    
 def main():
-   printin()
+   printiton()
    ota.send_device_version_message()
    while True:
       if not ota.update_in_progress:
-         temperature = random_range(10, 30) # Generate a random temperature between 10 and 30 degrees Celsius
-         humidity = random_range(40, 70) # Generate a random humidity between 40 and 70 percent
+         temperature = random_range(-10, 20) # Generate a random temperature between 10 and 30 degrees Celsius
+         humidity = random_range(0, 30) # Generate a random humidity between 40 and 70 percent
          print("Temperature:", temperature, "Humidity:", humidity)
          data ='sensor,' + str(temperature) + ',' + str(humidity)
          lora.send(data)
