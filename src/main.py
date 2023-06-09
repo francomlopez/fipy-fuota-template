@@ -6,6 +6,7 @@ from network import LoRa
 import utime
 from utils import random_range
 import uos
+from delete_file_test import printin
 import os
 import pycom
 
@@ -36,11 +37,11 @@ lora = LoraNet(LORA_FREQUENCY, LORA_NODE_DR, LORA_REGION, LORA_DEVICE_CLASS, LOR
 lora.connect()
 
 ota = LoraOTA(lora, DEVICE_VERSION)
-
+   
 def main():
+   printin()
    ota.send_device_version_message()
    while True:
-      print("change")
       if not ota.update_in_progress:
          temperature = random_range(10, 30) # Generate a random temperature between 10 and 30 degrees Celsius
          humidity = random_range(40, 70) # Generate a random humidity between 40 and 70 percent
@@ -49,8 +50,9 @@ def main():
          lora.send(data)
       utime.sleep(5)
 
-try:
+try:  
    main()
 except Exception as e:
    print("Main loop failed: " + str(e))
    ota.revert()
+   
